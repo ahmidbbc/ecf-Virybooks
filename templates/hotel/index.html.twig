@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ViryBooks Hotels{% endblock %}
+
+{% block body %}
+
+<div class="">
+    <h1>ViryBooks Hotel Reservations</h1>
+        <h2>Réservation</h2>
+
+        <div class="col-9">
+            <form method="post">
+                <label for="hotel">Dans quel hotel ?</label>
+                <select id="hotel" name="hotel">
+                    {% for hotel in hotelsList %}
+                        <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bookings">Chambre:</label>
+                <select name="bookings" id="">
+                    <option value="1">Simple</option>
+                    <option value="2">Double</option>
+                </select>
+                <label for="startedAt">Arrivée</label>
+                <input type="date" id="startedAt" name="startedAt">
+
+                <label for="endedAt">Départ</label>
+                <input type="date" id="endedAt" name="endedAt">
+
+                <button type="submit" class="btn btn-primary">Vérifier</button>
+            </form>
+        </div>
+
+        <h2>Nos hotels</h2>
+
+        {% for hotel in hotelsList %}
+        <div class="col-3">
+            <h3>{{ hotel.name }}</h3>
+            {% if hotel.img is not empty %}
+                <img src="{{ asset('/img/'~hotel.img) }}" class="img-thumbnail">
+            {% endif %}
+            <p>{{ hotel.description }}</p>
+
+        </div>
+        <div class="col-9"></div>
+    {% endfor %}
+
+</div>
+{% endblock %}

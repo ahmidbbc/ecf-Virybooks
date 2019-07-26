@@ -19,6 +19,15 @@ class HotelRepository extends ServiceEntityRepository
         parent::__construct($registry, Hotel::class);
     }
 
+
+    public function getAllHotels()
+    {
+        $qb =$this->createQueryBuilder('h')
+                    ->select('h');
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
     // /**
     //  * @return Hotel[] Returns an array of Hotel objects
     //  */

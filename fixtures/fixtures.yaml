@@ -9,6 +9,8 @@ App\Entity\Hotel:
     country: France
     phone_number: 0169155535
     email: hotel_gb91@gmail.com
+    img: public/img/3227_ho_00_p_1024x768.jpg
+    description: <text(300)>
   hotel_2:
     name: Hotel Cilof
     totalSingleRooms: 8
@@ -20,6 +22,8 @@ App\Entity\Hotel:
     phone_number: 0169155535
     email: inforesa@free.fr
     website: resapascher.free.fr
+    img: public/img/68184730.jpg
+    description: <text(300)>
   hotel_3:
     name: Hotel du Lac
     totalSingleRooms: 3
@@ -31,6 +35,8 @@ App\Entity\Hotel:
     phone_number: 0800121313
     email: contact@hoteldulac.fr
     website: hoteldulac.com
+    img: public/img/1246280_16061017110043391702.jpg
+    description: <text(300)>
 
 App\Entity\Room:
   room{1..30}:
