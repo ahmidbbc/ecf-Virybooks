@@ -39,7 +39,17 @@ App\Entity\Hotel:
     description: <text(300)>
 
 App\Entity\Room:
-  room{1..30}:
+  room{1..10}:
+    capacity: <numberBetween(1,2)>
+    price: <randomElement([80, 100])>
+    floor: <numberBetween(0, 5)>
+    hotel: <randomElement([@hotel_*], 3)>
+  room{11..20}:
+    capacity: <numberBetween(1,2)>
+    price: <randomElement([80, 100])>
+    floor: <numberBetween(0, 5)>
+    hotel: <randomElement([@hotel_*], 3)>
+  room{21..30}:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>

@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Hotel;
+use App\Entity\Room;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HotelController extends AbstractController
+class RoomController extends AbstractController
 {
 
     /**
@@ -16,7 +16,7 @@ class HotelController extends AbstractController
     private $em;
 
     /**
-     * HotelController constructor.
+     * RoomController constructor.
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
@@ -25,16 +25,15 @@ class HotelController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/aa", name="home")
      */
     public function indexAction()
     {
-        $hotelRepo = $this->em->getRepository(Hotel::class);
-        $hotelsList = $hotelRepo->getAllHotels();
+        $roomRepo = $this->em->getRepository(Room::class);
+        $roomLists = $roomRepo->getRoomByAvailability();
 
-
-        return $this->render('hotel/index.html.twig', [
-            'hotelsList' => $hotelsList
+        return $this->render('room/index.html.twig', [
+            'roomLists' => $roomLists,
         ]);
     }
 }

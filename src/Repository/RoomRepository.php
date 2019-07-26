@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Booking;
+use App\Entity\Hotel;
 use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -17,6 +19,19 @@ class RoomRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Room::class);
+    }
+
+    public function getRoomByAvailability()
+    {
+        $qb = $this ->createQueryBuilder("r")
+                    ->select("r.id, r.capacity, r.price")
+                    ->select('b')
+                    ->from(Booking::class, 'b')
+                    ->leftJoin('r.id_booking', 'id_booking')
+                    //->andWhere('r.id != id_booking.id')
+        ;
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**
