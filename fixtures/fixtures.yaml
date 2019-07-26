@@ -1,0 +1,33 @@
+App\Entity\Hotel:
+  hotel_1:
+    name: Hotel Grande-Borne
+    totalSingleRooms: 4
+    totalDoubleRooms: 6
+    address: 2 rue de Viry
+    postal_code: 91170
+    city: Viry-chatillon
+    country: France
+    phone_number: 0169155535
+    email: hotel_gb91@gmail.com
+  hotel_2:
+    name: Hotel Cilof
+    totalSingleRooms: 8
+    totalDoubleRooms: 2
+    address: 122 avenue du commandant Barre
+    postal_code: 91170
+    city: Viry-chatillon
+    country: France
+    phone_number: 0169155535
+    email: inforesa@free.fr
+    website: resapascher.free.fr
+  hotel_3:
+    name: Hotel du Lac
+    totalSingleRooms: 3
+    totalDoubleRooms: 7
+    address: 8 place du Lac
+    postal_code: 91170
+    city: Viry-chatillon
+    country: France
+    phone_number: 0800121313
+    email: contact@hoteldulac.fr
+    website: hoteldulac.com
