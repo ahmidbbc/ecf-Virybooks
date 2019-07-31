@@ -6,6 +6,7 @@ use App\Entity\Booking;
 use App\Entity\Hotel;
 use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use PDO;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -21,17 +22,23 @@ class RoomRepository extends ServiceEntityRepository
         parent::__construct($registry, Room::class);
     }
 
+    /**
+     * @param PDO $pdo
+     * @return mixed
+     */
     public function getRoomByAvailability()
     {
-        $qb = $this ->createQueryBuilder("r")
-                    ->select("r.id, r.capacity, r.price")
-                    ->select('b')
-                    ->from(Booking::class, 'b')
-                    ->leftJoin('r.id_booking', 'id_booking')
+        $pdo = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+        $qb = "SELECT * FROM virybooks.room WHERE room.id NOT IN(SELECT id FROM virybooks.booking)";
+        $res = $pdo->query($qb);
+                    //->select('b')
+                    //->from(Booking::class, 'b')
+                    //->leftJoin('r.id_booking', 'id_booking')
                     //->andWhere('r.id != id_booking.id')
         ;
 
-        return $qb->getQuery()->getResult();
+        return $res->fetchAll();
     }
 
     // /**
