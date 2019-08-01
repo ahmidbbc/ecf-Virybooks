@@ -4,18 +4,24 @@
 
 {% block body %}
 
-
-<div class="example-wrapper">
     {% for room in roomLists %}
-        <div class="card-body">
-            <img src="/img/rooms/{{ room.id }}.jpg" class="img-fluid">
-            <ul>
-                <li>{{ room.hotel_id }}</li>
-                <li>{{ room.capacity }}</li>
-                <li>{{ room.price }}</li>
-                <li>{{ room.floor }}</li>
-            </ul>
+
+        <div class="row">
+            <div class="col-3 ml-5">
+                <img src="{{ room.img }}" class="img-fluid">
+            </div>
+            <div class="col-7 bg-light border border-info">
+                <h4 ><strong>ID: {{ room.id }}</strong></h4>
+                <p>Le Five Palm Jumeirah Dubai allie avec harmonie
+                    un style architectural contemporain et un service
+                    unique et intuitif pour vous garantir un séjour
+                    incomparable et inoubliable.</p>
+            </div>
+
         </div>
+        <hr>
+
     {% endfor %}
-</div>
+
+
 {% endblock %}

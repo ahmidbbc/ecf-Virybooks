@@ -43,16 +43,19 @@ App\Entity\Room:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>
+    img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
   room{11..20}:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>
+    img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
   room{21..30}:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>
+    img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
 
 App\Entity\Customer:
@@ -65,3 +68,4 @@ App\Entity\Customer:
     city: <city()>
     phone_number: <phoneNumber()>
     email: <email()>
+
