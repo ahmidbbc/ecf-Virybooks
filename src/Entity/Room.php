@@ -34,6 +34,12 @@ class Room
     private $floor;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Hotel", inversedBy="id_room")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -88,6 +94,22 @@ class Room
         $this->floor = $floor;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+        $this->img = $img;
     }
 
     public function getHotel(): ?Hotel

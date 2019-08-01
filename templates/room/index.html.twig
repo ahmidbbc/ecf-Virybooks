@@ -6,6 +6,16 @@
 
 
 <div class="example-wrapper">
-    {{ dump(roomLists) }}
+    {% for room in roomLists %}
+        <div class="card-body">
+            <img src="/img/rooms/{{ room.id }}.jpg" class="img-fluid">
+            <ul>
+                <li>{{ room.hotel_id }}</li>
+                <li>{{ room.capacity }}</li>
+                <li>{{ room.price }}</li>
+                <li>{{ room.floor }}</li>
+            </ul>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}

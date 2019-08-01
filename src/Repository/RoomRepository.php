@@ -32,11 +32,6 @@ class RoomRepository extends ServiceEntityRepository
 
         $qb = "SELECT * FROM virybooks.room WHERE room.id NOT IN(SELECT id FROM virybooks.booking)";
         $res = $pdo->query($qb);
-                    //->select('b')
-                    //->from(Booking::class, 'b')
-                    //->leftJoin('r.id_booking', 'id_booking')
-                    //->andWhere('r.id != id_booking.id')
-        ;
 
         return $res->fetchAll();
     }
