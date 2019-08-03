@@ -34,7 +34,7 @@ class HotelController extends AbstractController
         $hotelsList = $hotelRepo->getAllHotels();
 
 
-        return $this->render('hotel/index.html.twig', [
+        return $this->render('hotel/index.html.twig', [     
             'hotelsList' => $hotelsList
         ]);
     }

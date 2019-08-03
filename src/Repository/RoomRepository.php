@@ -28,7 +28,7 @@ class RoomRepository extends ServiceEntityRepository
      * @param string $endedAt
      * @return mixed
      */
-    public function getRoomByAvailability($startedAt = '2019-08-03', $endedAt = '2019-08-31')
+    public function getRoomByAvailability($startedAt, $endedAt)
     {
         $req = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 

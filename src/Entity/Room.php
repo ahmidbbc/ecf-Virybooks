@@ -40,13 +40,13 @@ class Room
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Hotel")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Hotel", inversedBy="rooms")
      * @ORM\JoinColumn(nullable=false)
      */
     private $hotel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="room")
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="rooms")
      */
     private $id_booking;
 

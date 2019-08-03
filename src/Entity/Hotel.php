@@ -70,7 +70,7 @@ class Hotel
     private $website;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Room", mappedBy="id_hotel")
+     * @ORM\OneToMany(targetEntity="App\Entity\Room", mappedBy="hotel")
      */
     private $rooms;
 
