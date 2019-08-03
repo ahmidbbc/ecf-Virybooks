@@ -12,7 +12,14 @@
         {% block body %}
             <h1>ViryBooks Hotel Reservation</h1>
 
-
+            {{ form_start(formHotel) }}
+            {{ form_widget(formHotel) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Rechercher
+                </button>
+            </div>
+            {{ form_end(formHotel) }}
 
         {% endblock %}
 

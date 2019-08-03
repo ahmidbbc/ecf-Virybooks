@@ -7,6 +7,7 @@ use App\Entity\Hotel;
 use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use PDO;
+use PDOStatement;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -23,17 +24,21 @@ class RoomRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param PDO $pdo
+     * @param string $startedAt
+     * @param string $endedAt
      * @return mixed
      */
-    public function getRoomByAvailability()
+    public function getRoomByAvailability($startedAt = '2019-08-03', $endedAt = '2019-08-31')
     {
-        $pdo = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        $req = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-        $qb = "SELECT * FROM virybooks.room WHERE room.id NOT IN(SELECT id FROM virybooks.booking)";
-        $res = $pdo->query($qb);
+        $qb = $req->prepare("SELECT * FROM virybooks.room WHERE room.id NOT IN(SELECT room_id FROM virybooks.booking where started_at=:start AND ended_at=:end)");
+        $qb->execute(array(
+            'start' => $startedAt,
+            'end' => $endedAt
+        ));
 
-        return $res->fetchAll();
+        return $qb->fetchAll();
     }
 
     // /**

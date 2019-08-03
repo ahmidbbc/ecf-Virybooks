@@ -26,7 +26,7 @@ class HotelController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/")
      */
     public function indexAction()
     {

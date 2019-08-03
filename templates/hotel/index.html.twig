@@ -8,43 +8,48 @@
     <h1>ViryBooks Hotel Reservations</h1>
         <h2>Réservation</h2>
 
-        <div class="col-9">
-            <form method="post">
-                <label for="hotel">Dans quel hotel ?</label>
-                <select id="hotel" name="hotel">
-                    {% for hotel in hotelsList %}
-                        <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="bookings">Chambre:</label>
-                <select name="bookings" id="">
-                    <option value="1">Simple</option>
-                    <option value="2">Double</option>
-                </select>
-                <label for="startedAt">Arrivée</label>
-                <input type="date" id="startedAt" name="startedAt">
+        <div class="row justify-content-center">
+            <div class="col-11 rounded border border-warning p-2 text-center">
+                <form method="post" action="{{ path('rooms') }}">
+                    <label for="hotel">Dans quel hotel ?</label>
+                    <select id="hotel" name="hotel" required>
+                        {% for hotel in hotelsList %}
+                            <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="bookings">Chambre:</label>
+                    <select name="bookings" id="" required>
+                        <option value="1">Simple</option>
+                        <option value="2">Double</option>
+                    </select>
+                    <label for="startedAt">Arrivée</label>
+                    <input type="date" id="startedAt" name="startedAt" required>
 
-                <label for="endedAt">Départ</label>
-                <input type="date" id="endedAt" name="endedAt">
+                    <label for="endedAt">Départ</label>
+                    <input type="date" id="endedAt" name="endedAt" required>
 
-                <button type="submit" class="btn btn-primary">Vérifier</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Réserver</button>
+                </form>
+            </div>
         </div>
+
 
 
 
         <h2>Nos hotels</h2>
-
         {% for hotel in hotelsList %}
-        <div class="col-3">
-            <h3>{{ hotel.name }}</h3>
-            {% if hotel.img is not empty %}
-                <img src="{{ asset('/img/'~hotel.img) }}" class="img-thumbnail">
-            {% endif %}
-            <p>{{ hotel.description }}</p>
 
-        </div>
-        <div class="col-9"></div>
+            <div class="row">
+                <div class="col-3 ml-5">
+                    <img src="{{ hotel.img }}" class="img-fluid">
+                </div>
+                <div class="col-7 bg-light border border-info">
+                    <h4 ><strong> {{ hotel.name }}</strong></h4>
+                    <p>{{ hotel.description }}</p>
+                </div>
+
+            </div>
+            <hr>
     {% endfor %}
 
 </div>

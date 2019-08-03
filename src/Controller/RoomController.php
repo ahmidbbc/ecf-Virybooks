@@ -25,7 +25,7 @@ class RoomController extends AbstractController
     }
 
     /**
-     * @Route("/aa", name="home")
+     * @Route("/aa", name="rooms")
      */
     public function indexAction()
     {

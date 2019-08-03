@@ -15,20 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/aaaaa")
      * @param Request $request
      * @return Response
      */
     public function indexAction(Request $request)
     {
         $hotel = new Hotel();
-        $hotel->setName('');
 
         $room = new Room();
-        $room->getCapacity();
 
         $formHotel = $this->createForm(Hotel::class, $hotel);
-        $formRoom = $this->createForm(Room::class, $hotel);
+        $formRoom = $this->createForm(Room::class, $room);
+        $formHotel->handleRequest($request);
+        $formRoom->handleRequest($request);
 
         return $this->render('base.html.twig', [
             'formHotel' => $formHotel,
