@@ -46,7 +46,7 @@ class Room
     private $hotel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="rooms")
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="room")
      */
     private $id_booking;
 

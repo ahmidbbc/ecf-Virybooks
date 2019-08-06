@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="">
+    <div class="">
     <h1>ViryBooks Hotel Reservations</h1>
         <h2>Réservation</h2>
 
@@ -17,8 +17,8 @@
                             <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
                         {% endfor %}
                     </select>
-                    <label for="bookings">Chambre:</label>
-                    <select name="bookings" id="" required>
+                    <label for="guests">Chambre:</label>
+                    <select name="guests" id="guests" required>
                         <option value="1">Simple</option>
                         <option value="2">Double</option>
                     </select>
