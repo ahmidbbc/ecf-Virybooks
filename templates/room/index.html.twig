@@ -3,7 +3,7 @@
 {% block title %}Hello RoomController!{% endblock %}
 
 {% block body %}
-{{ dump(hotel) }}
+    <h2>{{ hotelName }}</h2>
     {% for room in roomsList %}
 
         <div class="row">
@@ -16,6 +16,8 @@
                     un style architectural contemporain et un service
                     unique et intuitif pour vous garantir un séjour
                     incomparable et inoubliable.</p>
+                <div class="btn btn-secondary text-white">{{ room.price }}€ / Nuit</div>
+                <button class="btn btn-primary float-right">Reserver</button>
             </div>
 
         </div>

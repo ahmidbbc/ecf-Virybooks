@@ -13,7 +13,7 @@
                     <label for="hotel">Dans quel hotel ?</label>
                     <select id="hotel" name="hotel" required>
                         {% for hotel in hotelsList %}
-                            <option value="{{ hotel.id }}">Hotel {{ hotel.name }}</option>
+                            <option value="{{ hotel.id }}">{{ hotel.name }}</option>
                         {% endfor %}
                     </select>
                     <label for="guest">Chambre:</label>
