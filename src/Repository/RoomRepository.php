@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Entity\Booking;
 use App\Entity\Hotel;
 use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -32,11 +31,18 @@ class RoomRepository extends ServiceEntityRepository
     {
         $req = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-        $qb = $req->prepare("SELECT * FROM virybooks.room WHERE room.id NOT IN(SELECT room_id FROM virybooks.booking where started_at=:start AND ended_at=:end AND capacity=:guest)");
+        $qb = $req->prepare("SELECT * FROM virybooks.room
+                                        WHERE capacity=:guest
+                                        AND id NOT IN(
+                                            SELECT room_id FROM virybooks.booking 
+                                            WHERE started_at BETWEEN :start AND :end 
+                                            OR ended_at BETWEEN :start AND :end 
+                                        )                                        
+                                      ");
         $qb->execute(array(
             'start' => $startedAt,
             'end' => $endedAt,
-            'guest' => $guest
+            'guest' => intval($guest)
         ));
 
         return $qb->fetchAll();

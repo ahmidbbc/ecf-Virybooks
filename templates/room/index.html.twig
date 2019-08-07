@@ -3,9 +3,8 @@
 {% block title %}Hello RoomController!{% endblock %}
 
 {% block body %}
-    {{ dump(guests) }}
-{{ dump(roomLists) }}
-    {% for room in roomLists %}
+{{ dump(guest) }}
+    {% for room in roomsList %}
 
         <div class="row">
             <div class="col-3 ml-5">

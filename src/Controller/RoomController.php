@@ -30,14 +30,15 @@ class RoomController extends AbstractController
      */
     public function indexAction()
     {
-        //if checkdate ( int $month , int $day , int $year ) : bool o try/catch
-        $startedAt = filter_input(INPUT_POST, "startedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/")));
-        $endedAt = filter_input(INPUT_POST, "endedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/")));
-        $guest = filter_input(INPUT_POST, 'bookings', FILTER_SANITIZE_STRING);
+        $dateRegex = "/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/";
+
+        $startedAt = filter_input(INPUT_POST, "startedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$dateRegex)));
+        $endedAt = filter_input(INPUT_POST, "endedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$dateRegex)));
+        $guest = filter_input(INPUT_POST, 'guest', FILTER_SANITIZE_STRING);
 
 
-        $hotelRepo = $this->em->getRepository(Hotel::class);
-        $hotelsList = $hotelRepo->getAllHotels();
+        //$hotelRepo = $this->em->getRepository(Hotel::class);
+        //$hotelsList = $hotelRepo->getAllHotels();
 
         $roomRepo = $this->em->getRepository(Room::class);
         $roomsList = $roomRepo->getRoomByAvailability($startedAt, $endedAt, $guest);
@@ -46,7 +47,7 @@ class RoomController extends AbstractController
 
             return $this->render('room/index.html.twig', [
                 'roomsList' => $roomsList,
-                'hotelsList' => $hotelsList,
+                //'hotelsList' => $hotelsList,
                 'startedAt' => $startedAt,
                 'endedAt' => $endedAt,
                 'guest' => $guest
