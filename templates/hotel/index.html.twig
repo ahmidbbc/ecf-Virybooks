@@ -3,31 +3,30 @@
 {% block title %}ViryBooks Hotels{% endblock %}
 
 {% block body %}
-
 <div class="">
     <h1>ViryBooks Hotel Reservations</h1>
         <h2>Réservation</h2>
         <div class="row justify-content-center">
             <div class="col-11 rounded border border-warning p-2 text-center">
                 <form method="post" action="{{ path('rooms') }}">
-                    <label for="hotel">Dans quel hotel ?</label>
+                    <label for="hotel" class="h4 mr-3"><span class="badge badge-warning">1</span></label>
                     <select id="hotel" name="hotel" required>
                         {% for hotel in hotelsList %}
-                            <option value="{{ hotel.id }}">Hotel {{ hotel.name }}</option>
+                            <option value="{{ hotel.id }}">{{ hotel.name }}</option>
                         {% endfor %}
                     </select>
-                    <label for="guest">Chambre:</label>
+                    <label for="guest" class="h4 ml-3 mr-3"><span class="badge badge-warning">2</span></label>
                     <select name="guest" id="" required>
-                        <option value="1">Simple</option>
-                        <option value="2">Double</option>
+                        <option value="1">Chambre simple</option>
+                        <option value="2">Chambre double</option>
                     </select>
-                    <label for="startedAt">Arrivée</label>
-                    <input type="date" id="startedAt" name="startedAt" required>
+                    <label for="startedAt" class="h4 ml-3 mr-3"><span class="h4 badge badge-warning">3</span></label>
+                    <input type="date" id="startedAt" name="startedAt" value="{{ currentDate }}" required>
 
-                    <label for="endedAt">Départ</label>
+                    <label for="endedAt" class="h4 ml-3 mr-3"><span class="h4 badge badge-warning">4</span></label>
                     <input type="date" id="endedAt" name="endedAt" required>
 
-                    <button type="submit" class="btn btn-primary">Réserver</button>
+                    <button type="submit" class="btn btn-primary ml-3">Réserver</button>
                 </form>
             </div>
         </div>

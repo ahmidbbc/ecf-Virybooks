@@ -33,9 +33,9 @@ class HotelController extends AbstractController
         $hotelRepo = $this->em->getRepository(Hotel::class);
         $hotelsList = $hotelRepo->getAllHotels();
 
-
         return $this->render('hotel/index.html.twig', [     
-            'hotelsList' => $hotelsList
+            'hotelsList' => $hotelsList,
+            'currentDate' => date("Y-m-d")
         ]);
     }
 }

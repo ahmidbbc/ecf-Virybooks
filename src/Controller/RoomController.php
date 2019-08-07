@@ -37,6 +37,8 @@ class RoomController extends AbstractController
         $endedAt = filter_input(INPUT_POST, "endedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$dateRegex)));
         $guest = filter_input(INPUT_POST, 'guest', FILTER_SANITIZE_STRING);
 
+        $hotelRepo = $this->em->getRepository(Hotel::class)->find($hotel);
+
         if(!empty($hotel) && !empty($startedAt) && !empty($endedAt) && !empty($guest)){
 
             if($startedAt && $endedAt) {
@@ -47,7 +49,7 @@ class RoomController extends AbstractController
             return $this->render('room/index.html.twig', [
                 'roomsList' => $roomsList,
                 'startedAt' => $startedAt,
-                'hotel' => $hotel,
+                'hotelName' => $hotelRepo->getName(),
                 'endedAt' => $endedAt,
                 'guest' => $guest
             ]);
