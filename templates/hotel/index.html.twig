@@ -7,14 +7,13 @@
 <div class="">
     <h1>ViryBooks Hotel Reservations</h1>
         <h2>Réservation</h2>
-
         <div class="row justify-content-center">
             <div class="col-11 rounded border border-warning p-2 text-center">
                 <form method="post" action="{{ path('rooms') }}">
                     <label for="hotel">Dans quel hotel ?</label>
                     <select id="hotel" name="hotel" required>
                         {% for hotel in hotelsList %}
-                            <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
+                            <option value="{{ hotel.id }}">Hotel {{ hotel.name }}</option>
                         {% endfor %}
                     </select>
                     <label for="guest">Chambre:</label>

@@ -32,23 +32,22 @@ class RoomController extends AbstractController
     {
         $dateRegex = "/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/";
 
+        $hotel = filter_input(INPUT_POST, 'hotel', FILTER_SANITIZE_STRING);
         $startedAt = filter_input(INPUT_POST, "startedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$dateRegex)));
         $endedAt = filter_input(INPUT_POST, "endedAt", FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$dateRegex)));
         $guest = filter_input(INPUT_POST, 'guest', FILTER_SANITIZE_STRING);
 
+        if(!empty($hotel) && !empty($startedAt) && !empty($endedAt) && !empty($guest)){
 
-        //$hotelRepo = $this->em->getRepository(Hotel::class);
-        //$hotelsList = $hotelRepo->getAllHotels();
-
-        $roomRepo = $this->em->getRepository(Room::class);
-        $roomsList = $roomRepo->getRoomByAvailability($startedAt, $endedAt, $guest);
-
-        if($startedAt && $endedAt) {
+            if($startedAt && $endedAt) {
+                $roomRepo = $this->em->getRepository(Room::class);
+                $roomsList = $roomRepo->getRoomByAvailability($hotel, $startedAt, $endedAt, $guest);
+            }
 
             return $this->render('room/index.html.twig', [
                 'roomsList' => $roomsList,
-                //'hotelsList' => $hotelsList,
                 'startedAt' => $startedAt,
+                'hotel' => $hotel,
                 'endedAt' => $endedAt,
                 'guest' => $guest
             ]);

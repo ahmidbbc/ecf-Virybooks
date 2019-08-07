@@ -27,19 +27,21 @@ class RoomRepository extends ServiceEntityRepository
      * @param string $endedAt
      * @return mixed
      */
-    public function getRoomByAvailability($startedAt, $endedAt, $guest)
+    public function getRoomByAvailability($hotel, $startedAt, $endedAt, $guest)
     {
         $req = new PDO("mysql://root:@127.0.0.1:3306/viryBooks", "root", '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
         $qb = $req->prepare("SELECT * FROM virybooks.room
                                         WHERE capacity=:guest
+                                        AND hotel_id=:hotel
                                         AND id NOT IN(
                                             SELECT room_id FROM virybooks.booking 
                                             WHERE started_at BETWEEN :start AND :end 
-                                            OR ended_at BETWEEN :start AND :end 
+                                            OR ended_at BETWEEN :start AND :end
                                         )                                        
                                       ");
         $qb->execute(array(
+            'hotel' => $hotel,
             'start' => $startedAt,
             'end' => $endedAt,
             'guest' => intval($guest)
