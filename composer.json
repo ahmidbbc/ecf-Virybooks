@@ -19,7 +19,8 @@
         "symfony/validator": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.6",
         "symfony/yaml": "4.3.*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-http": "*"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",

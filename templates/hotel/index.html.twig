@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="">
+<div class="">
     <h1>ViryBooks Hotel Reservations</h1>
         <h2>Réservation</h2>
 
@@ -17,8 +17,8 @@
                             <option value=" {{ hotel.id }}">Hotel {{ hotel.name }}</option>
                         {% endfor %}
                     </select>
-                    <label for="guests">Chambre:</label>
-                    <select name="guests" id="guests" required>
+                    <label for="guest">Chambre:</label>
+                    <select name="guest" id="" required>
                         <option value="1">Simple</option>
                         <option value="2">Double</option>
                     </select>
@@ -33,15 +33,12 @@
             </div>
         </div>
 
-
-
-
         <h2>Nos hotels</h2>
         {% for hotel in hotelsList %}
 
             <div class="row">
                 <div class="col-3 ml-5">
-                    <img src="{{ hotel.img }}" class="img-fluid">
+                    <img src="{{ hotel.img }}" class="img-fluid" alt="Fixture with Alice from lorempixel.com">
                 </div>
                 <div class="col-7 bg-light border border-info">
                     <h4 ><strong> {{ hotel.name }}</strong></h4>
