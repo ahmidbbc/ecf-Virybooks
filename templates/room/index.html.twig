@@ -11,7 +11,15 @@
                 <img src="{{ room.img }}" class="img-fluid">
             </div>
             <div class="col-7 bg-light border border-info">
-                <h4 ><strong>ID: {{ room.id }}</strong></h4>
+                <h4 >Chambre {{ room.name }}
+                    <span class="badge badge-pill badge-warning">
+                        {% if room.capacity > 1 %}
+                            double
+                        {% else %}
+                            simple
+                        {% endif %}
+                    </span>
+                </h4>
                 <p>Le Five Palm Jumeirah Dubai allie avec harmonie
                     un style architectural contemporain et un service
                     unique et intuitif pour vous garantir un séjour

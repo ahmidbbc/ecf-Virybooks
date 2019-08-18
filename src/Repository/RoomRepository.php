@@ -37,14 +37,14 @@ class RoomRepository extends ServiceEntityRepository
                                         AND id NOT IN(
                                             SELECT room_id FROM virybooks.booking 
                                             WHERE started_at BETWEEN :start AND :end 
-                                            OR ended_at BETWEEN :start AND :end
+                                            AND ended_at BETWEEN :start AND :end
                                         )                                        
                                       ");
         $qb->execute(array(
             'hotel' => $hotel,
             'start' => $startedAt,
             'end' => $endedAt,
-            'guest' => intval($guest)
+            'guest' => $guest
         ));
 
         return $qb->fetchAll();

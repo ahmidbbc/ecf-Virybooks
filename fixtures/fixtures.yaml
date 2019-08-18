@@ -10,7 +10,7 @@ App\Entity\Hotel:
     phone_number: 0169155535
     email: hotel_gb91@gmail.com
     img: /img/3227_ho_00_p_1024x768.jpg
-    description: <text(300)>
+    description: <text(1000)>
   hotel_2:
     name: Hotel Cilof
     totalSingleRooms: 8
@@ -45,18 +45,21 @@ App\Entity\Room:
     floor: <numberBetween(0, 5)>
     img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
+    name: <state()>
   room{11..20}:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>
     img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
+    name: <state()>
   room{21..30}:
     capacity: <numberBetween(1,2)>
     price: <randomElement([80, 100])>
     floor: <numberBetween(0, 5)>
     img: <imageUrl(1000, 600, 'city')>
     hotel: <randomElement([@hotel_*], 3)>
+    name: <state()>
 
 App\Entity\Customer:
   room{1..5}:

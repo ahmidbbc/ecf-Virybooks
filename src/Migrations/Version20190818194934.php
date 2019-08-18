@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190801202110 extends AbstractMigration
+final class Version20190818194934 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -24,7 +24,7 @@ final class Version20190801202110 extends AbstractMigration
 
         $this->addSql('ALTER TABLE customer CHANGE first_name first_name VARCHAR(100) DEFAULT NULL, CHANGE postal_code postal_code VARCHAR(20) DEFAULT NULL, CHANGE phone_number phone_number VARCHAR(20) DEFAULT NULL, CHANGE email email VARCHAR(100) DEFAULT NULL');
         $this->addSql('ALTER TABLE hotel CHANGE postal_code postal_code VARCHAR(10) DEFAULT NULL, CHANGE phone_number phone_number VARCHAR(20) DEFAULT NULL, CHANGE email email VARCHAR(100) DEFAULT NULL, CHANGE website website VARCHAR(100) DEFAULT NULL, CHANGE img img VARCHAR(255) DEFAULT NULL, CHANGE description description VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE room ADD img VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE room ADD name VARCHAR(80) NOT NULL, CHANGE img img VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -34,6 +34,6 @@ final class Version20190801202110 extends AbstractMigration
 
         $this->addSql('ALTER TABLE customer CHANGE first_name first_name VARCHAR(100) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE postal_code postal_code VARCHAR(20) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE phone_number phone_number VARCHAR(20) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE email email VARCHAR(100) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
         $this->addSql('ALTER TABLE hotel CHANGE postal_code postal_code VARCHAR(10) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE phone_number phone_number VARCHAR(20) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE email email VARCHAR(100) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE website website VARCHAR(100) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE img img VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE description description VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
-        $this->addSql('ALTER TABLE room DROP img');
+        $this->addSql('ALTER TABLE room DROP name, CHANGE img img VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
     }
 }

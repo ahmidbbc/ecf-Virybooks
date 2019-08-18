@@ -50,6 +50,11 @@ class Room
      */
     private $id_booking;
 
+    /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->id_booking = new ArrayCollection();
@@ -151,6 +156,18 @@ class Room
                 $idBooking->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
